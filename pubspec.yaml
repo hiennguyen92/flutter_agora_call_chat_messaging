@@ -24,12 +24,13 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_hiennv: ^1.0.0+2
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
+  flutter_screenutil: 5.0.0+2
   cupertino_icons: ^1.0.2
   provider: ^5.0.0
-  agora_rtc_engine: ^4.0.7
+  agora_rtc_engine: ^6.1.0
+  permission_handler: ^10.2.0
 
 dev_dependencies:
   flutter_test:

@@ -1,51 +1,23 @@
-
+import 'package:flutter_agora_call_chat_messaging/ui/home_screen.dart';
+import 'package:flutter_agora_call_chat_messaging/ui/splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_agora_call_chat_messaging/pages/home_screen/home_screen.dart';
-import 'package:flutter_agora_call_chat_messaging/pages/home_screen/home_view_model.dart';
-import 'package:flutter_agora_call_chat_messaging/pages/login_screen/login_screen.dart';
-import 'package:flutter_agora_call_chat_messaging/pages/login_screen/login_view_model.dart';
-import 'package:flutter_agora_call_chat_messaging/pages/splash_screen/splash_screen.dart';
-import 'package:flutter_hiennv/base/base_app_route.dart';
-import 'package:flutter_hiennv/base/base_material_page_route.dart';
 
-class AppRoute extends BaseAppRoute {
+class AppRoute {
 
-  static final AppRoute _instance = AppRoute._private();
-  factory AppRoute() {
-    return _instance;
-  }
-  AppRoute._private();
+  static const splashScreen = '/splash_screen';
 
-  static AppRoute get instance => _instance;
+  static const homeScreen = '/home_screen';
 
-  static const splashScreen = '/splashScreen';
-  static const loginScreen = '/loginScreen';
-  static const homeScreen = '/homeScreen';
+  static const settingScreen = '/setting_screen';
 
-  @override
-  Route<Object>? generateRoute(RouteSettings settings) {
-    switch (settings.name) {
-      case splashScreen:
-        return AppPageRoute(
-            appSettings: settings, builder: (_) => SplashScreen());
-      case loginScreen:
-        return AppPageRoute(
-            appSettings: settings,
-            builder: (_) => createProviderByPage(
-                ((BuildContext context) => LoginViewModel(context)),
-                LoginScreen()));
+
+  static Route<Object>? generateRoute(RouteSettings settings) {
+    switch(settings.name) {
       case homeScreen:
-        return AppPageRoute(
-            appSettings: settings,
-            builder: (_) => createProviderByPage(
-                ((BuildContext context) => HomeViewModel(context)),
-                HomeScreen()));
+        return MaterialPageRoute(builder: (_) => HomeScreen());
+      default:
+        return MaterialPageRoute(builder: (_) => SplashScreen());
     }
   }
 
-}
-
-class AppPageRoute extends BaseMaterialPageRoute {
-  AppPageRoute({required WidgetBuilder builder, RouteSettings? appSettings})
-      : super(builder: builder, appSettings: appSettings);
 }
